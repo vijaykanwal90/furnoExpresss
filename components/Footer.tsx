@@ -3,20 +3,38 @@
 import { useState } from "react"
 import Link from "next/link"
 import { FiSend } from "react-icons/fi";
-import { FaInstagram, FaTwitter, FaLinkedin,FaFacebook} from "react-icons/fa6";
+import { FaInstagram, FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa6";
 
 export function Footer() {
   const [email, setEmail] = useState("")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement newsletter signup logic
     console.log("Signed up with:", email)
     setEmail("")
   }
 
   return (
-    <footer className="bg-gray-200 text-cream">
+    <footer className="bg-wood-dark text-cream">
+      <div 
+        className="w-full h-18 bg-cover bg-center rounded-lg mb-12" 
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')", height: "50rem"  }} 
+      >
+        <div className="bg-black bg-opacity-15 flex flex-col items-center justify-center h-full rounded-lg">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Let's Build Your Dream Space
+          </h2>
+          <p className="text-lg text-white mb-6 text-center px-4">
+            Contact us today to transform your space with innovative design and quality furniture.
+          </p>
+          <Link href="/contact">
+            <button className="bg-amber-900 hover:bg-amber-950 text-white font-bold py-2 px-6 rounded-md transition-colors duration-300">
+              Contact Us
+            </button>
+          </Link>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
@@ -132,4 +150,3 @@ export function Footer() {
     </footer>
   )
 }
-
