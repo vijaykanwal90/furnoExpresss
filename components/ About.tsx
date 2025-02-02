@@ -1,25 +1,31 @@
+"use client"
 import NextLink from 'next/link';
-
 import Image from "next/image";
 import React from "react";
 import bg from "../public/bg.png";
-import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
+import { TextGenerateEffect } from './ui/TextGenerationEffect';
+import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
+import { Button } from './ui/moving-border';
 // import Link from "next/link";
+import { Separator } from "@/components/ui/separator"
+
 export function About(){
     return (
         <section className='px-6 '>
             <div className='w-full h-full flex flex-col flex-between items-center my-32 sm:flex-row '>
              <div className='flex-1 space-y-4 sm:pr-80 px-4 sm:px-0 mt-20 sm:mt-0'>
           <div className='font-generalsans text-center sm:text-left'>
-            <h1 className="font_0 wixui-rich-text__text text-4xl sm:text-6xl leading-tight mb-4">
+            {/* <h1 className="font_0 wixui-rich-text__text text-4xl sm:text-6xl leading-tight mb-4">
               Ab Furniture Adjust Nahi <br /> Customize Karo!
-            </h1>
+            </h1> */}
+            <TextGenerateEffect words="Ab Furniture Adjust Nahi Explore endless possibilities and create furniture that fits your style. " className="text-4xl sm:text-6xl leading-tight mb-4 "/>
+
             <p className="text-lg sm:text-xl mb-8">
-              Explore endless possibilities and create furniture that fits your style.
+              
             </p>
-            <button className='px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base text-black bg-amber-600 font-bold rounded-lg hover:bg-amber-800 transition-all duration-200'>
-              <NextLink href='/customise'><span className="StylableButton2545352419__label wixui-button__label" data-testid="stylablebutton-label">CUSTOMIZE</span></NextLink>
-            </button>
+            <Button className='' borderRadius='1.75rem'>
+              <NextLink href='/customize'><span className="StylableButton2545352419__label wixui-button__label" data-testid="stylablebutton-label">CUSTOMIZE</span></NextLink>
+            </Button>
           </div>
         </div>
         <CardContainer className="inter-var">
@@ -37,14 +43,16 @@ export function About(){
         </CardItem>
        
       </CardBody>
+      
     </CardContainer>
-            
+   
             
             </div>
 
             <div className=''>
 
             </div>
+            <Separator  className='my-4 bg-black'/>
         </section>
     )
 }

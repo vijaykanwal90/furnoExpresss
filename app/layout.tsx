@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-// import {FollowingPointerCard ,TitleComponent} from "../components/ui/following-pointer";
+// import {FollowerPointerCard } from "../components/ui/following-pointer";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 // const geistSans = Geist({
@@ -33,13 +33,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} antialiased font-poppins text-amber-800 bg-stone-200 `}
+        className={`${poppins.variable} antialiased font-poppins text-amber-800 bg-white `}
       >
        
-
+        {/* <FollowerPointerCard> */}
         <Navbar/>
         {children}
         <Footer/>
+        {/* </FollowerPointerCard> */}
 
       
       </body>

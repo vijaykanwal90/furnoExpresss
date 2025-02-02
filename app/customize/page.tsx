@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 export default function Customize() {
   return (
     <div className=' h-screen w-full bg-cover bg-center opacity-90'  > 
@@ -9,9 +10,9 @@ export default function Customize() {
           Here you can customize your settings or preferences.
         </p>
       </div>
-      <div className="flex justify-center items-center">
-        <img src={"./assets/bg.png"}  alt='Hero Background'
-          className='w-full h-auto object-cover transform scale-x-[-1]' />
+      <div className="flex justify-center items-center w-full h-auto object-cover transform scale-x-[-1]">
+        <Image src={"./assets/bg.png"}  alt='Hero Background'
+           />
       </div>
       </div> 
  

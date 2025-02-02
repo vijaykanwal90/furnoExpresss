@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
-
+import cursor from "../../public/cursor.png";
+import Image from "next/image";
 export  const FollowerPointerCard = ({
   children,
-  className,
-  title,
+  className
 }: {
   children: React.ReactNode;
   className?: string;
-  title?: string | React.ReactNode;
+
 }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -53,7 +53,7 @@ export  const FollowerPointerCard = ({
       className={cn("relative", className)}
     >
       <AnimatePresence>
-        {isInside && <FollowPointer x={x} y={y} title={title} />}
+        {isInside && <FollowPointer x={x} y={y}  />}
       </AnimatePresence>
       {children}
     </div>
@@ -63,10 +63,10 @@ export  const FollowerPointerCard = ({
 export const FollowPointer = ({
   x,
   y,
-  title,
+  
 }: {
-  x: any;
-  y: any;
+  x: unknown;
+  y: unknown;
   title?: string | React.ReactNode;
 }) => {
   const colors = [
@@ -99,18 +99,20 @@ export const FollowPointer = ({
         opacity: 0,
       }}
     >
-      <svg
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="1"
-        viewBox="0 0 16 16"
+      <Image
+      src={cursor}
+        // stroke="currentColor"
+        // fill="currentColor"
+        // strokeWidth="1"
+        // viewBox="0 0 16 16"
+        alt="cursor"
         className="h-6 w-6 text-sky-500 transform -rotate-[70deg] -translate-x-[12px] -translate-y-[10px] stroke-sky-600"
-        height="1em"
-        width="1em"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
-      </svg>
+        height="1"
+        width="1"
+        // xmlns="http://www.w3.org/2000/svg"
+      
+        // <path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103z"></path>
+      />
       <motion.div
         style={{
           backgroundColor: colors[Math.floor(Math.random() * colors.length)],
@@ -131,7 +133,7 @@ export const FollowPointer = ({
           "px-2 py-2 bg-neutral-200 text-white whitespace-nowrap min-w-max text-xs rounded-full"
         }
       >
-        {title || `William Shakespeare`}
+    
       </motion.div>
     </motion.div>
   );
