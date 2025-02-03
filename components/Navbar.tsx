@@ -1,4 +1,5 @@
 "use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -19,7 +20,7 @@ const NavLink = ({
 }) => (
   <Link
     href={href}
-    className="text-wood-dark hover:text-wood-medium transition-colors duration-300 block py-2 px-4 text-sm"
+    className="text-wood-dark hover:text-wood-medium hover:underline transition-all duration-300 block py-2 px-4 text-base"
     onClick={onClick}
   >
     {children}
@@ -35,27 +36,23 @@ export function Navbar() {
   const toggleSignup = () => setIsSignupOpen(!isSignupOpen);
 
   return (
-    <nav className="bg-cream shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-cream shadow-md ">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image src={logo} alt="logo" width={40} />
-              <span className="text-2xl font-bold text-wood-dark">FurnoExpress</span>
+              <span className="text-2xl px-2 font-bold text-wood-dark">FurnoExpress</span>
             </Link>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
+              <NavLink href="/#home">Home</NavLink>
               <NavLink href="/#offerings">Offerings</NavLink>
-              <Button borderRadius="1.75rem" className="">
-                <NavLink href="/customize">Customize</NavLink>
-              </Button>
-              <NavLink href="/contact">Contact Us</NavLink>
+              <NavLink href="/contact">Contact</NavLink>
               <NavLink href="/#about">About Us</NavLink>
-              <button
-                onClick={toggleSignup}
-                className="bg-wood-medium hover:bg-wood-dark text-cream font-bold py-2 px-4 rounded transition-colors duration-300 text-sm"
-              >
+              <NavLink href="/#faqs">FAQs</NavLink>
+              <button className="bg-amber-900 hover:bg-amber-950 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-sm">
                 Sign In
               </button>
             </div>
