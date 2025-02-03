@@ -71,7 +71,7 @@ const Categories: React.FC = () => {
           pauseOnMouseEnter: true
         }}
         pagination={{
-          clickable: true,
+          clickable: false,
           dynamicBullets: true
         }}
         navigation={true}  
