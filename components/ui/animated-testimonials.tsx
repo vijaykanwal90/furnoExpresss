@@ -3,7 +3,7 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 type Testimonial = {
   quote: string;
@@ -36,6 +36,9 @@ const defaultTestimonials: Testimonial[] = [
   },
 ];
 
+// Predefined, stable rotations to avoid hydration issues
+const PREDEFINED_ROTATIONS = [-7, 5, -3];
+
 export const AnimatedTestimonials = ({
   testimonials = defaultTestimonials,
   autoplay = false,
@@ -44,27 +47,25 @@ export const AnimatedTestimonials = ({
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const [rotations, setRotations] = useState<number[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
-  // Precompute rotations on mount so they remain stable.
-  useEffect(() => {
-    setMounted(true);
-    setRotations(testimonials.map(() => Math.floor(Math.random() * 21) - 10));
-  }, [testimonials]);
+  // Ensure consistent rotations across server and client
+  const rotations = testimonials.map((_, index) => 
+    PREDEFINED_ROTATIONS[index % PREDEFINED_ROTATIONS.length]
+  );
 
   useEffect(() => {
-    if (autoplay) {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && autoplay) {
       const interval = setInterval(() => {
         setActive((prev) => (prev + 1) % testimonials.length);
       }, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay, testimonials.length]);
-
-  if (!mounted) {
-    return <div style={{ minHeight: "500px" }} />;
-  }
+  }, [isClient, autoplay, testimonials.length]);
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
@@ -76,8 +77,13 @@ export const AnimatedTestimonials = ({
 
   const isActive = (index: number) => index === active;
 
+  // Render nothing on server to prevent hydration mismatch
+  if (!isClient) {
+    return <div style={{ minHeight: "500px" }} />;
+  }
+
   return (
-    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-1">
+    <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-1 mb-40">
       <div className="text-center mb-16 py-4">
         <h2 className="text-3xl font-bold tracking-tight text-#333 dark:text-white sm:text-4xl">
           What they say about me
@@ -201,7 +207,7 @@ export const AnimatedTestimonials = ({
             </button>
           </div>
         </div>
-      </div><br /><br /><br /><br /><br/>
+      </div>
     </div>
   );
 };

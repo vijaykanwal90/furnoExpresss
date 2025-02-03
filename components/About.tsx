@@ -1,28 +1,37 @@
-import NextLink from 'next/link';
+"use client";
 
+import NextLink from 'next/link';
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import bg from "../public/bg.png";
-import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
+import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
 import Link from "next/link";
 
 export function About(){
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
-        <section className='relative w-screen min-h-[75vh] md:min-h-screen'>
+    <section className='relative w-screen min-h-[75vh] md:min-h-screen'>
       {/* Video Background */}
       <div className='absolute top-0 left-0 w-full h-full overflow-hidden'>
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-
-
-          className='w-full h-full object-cover'
-        >
-          <source src='https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4' type='video/mp4' />
-          Your browser does not support the video tag.
-        </video>
+        {isClient ? (
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className='w-full h-full object-cover'
+          >
+            <source src='https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4' type='video/mp4' />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <div className='w-full h-full bg-black/40'></div>
+        )}
         {/* Overlay */}
         <div className='absolute inset-0 bg-black/40'></div>
       </div>
@@ -32,7 +41,7 @@ export function About(){
         {/* Left Section */}
         <div className='flex-1 text-xs space-y-4 sm:pr-80 px-4 sm:px-0 mt-20 sm:mt-0'>
           <div className='font-generalsans text-center sm:text-left'>
-            <h1 className="font_0 wixui-rich-text__text text-4xl sm:text-6xl md:ml-20 leading-tight mb-4">
+            <h1 className="font_0 wixui-rich-text__text text-4xl sm:text-6xl md:ml-20 leading-tight mb-4 font-semibold">
               Ab Furniture Adjust Nahi <br /> Customize Karo!
             </h1>
             <p className="text-lg sm:text-xl md:ml-20 mb-8">
@@ -45,5 +54,5 @@ export function About(){
         </div>
       </div>
     </section>
-    )
+  )
 }
