@@ -66,7 +66,7 @@ const Categories: React.FC = () => {
 
   return (
     <div 
-      className="categories-container px-4 sm:px-6 lg:px-8" 
+      className=" categories-container px-4 sm:px-6 lg:px-8" id="offerings"
       style={{ 
         maxWidth: '1400px',   
         margin: '0 auto',
@@ -74,8 +74,8 @@ const Categories: React.FC = () => {
         padding: '80px 0px'
       }}
     >
-      <h1 className="text-center mb-8 font-sans font-bold text-4xl sm:text-3xl md:text-4xl text-amber-800">
-        Categories
+      <h1 className="text-center mb-8 font-sans font-bold text-4xl sm:text-3xl md:text-4xl bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text">
+        Offerings
       </h1>
       
       <Swiper
@@ -97,8 +97,8 @@ const Categories: React.FC = () => {
           padding: '0 1px',
           position: 'relative',
           ...{
-            '--swiper-navigation-color': '#4a2c2a' as any,
-            '--swiper-navigation-size': '30px' as any
+            '--swiper-navigation-color': '#4a2c2a' as unknown,
+            '--swiper-navigation-size': '30px' as unknown
           }
         }}
       >

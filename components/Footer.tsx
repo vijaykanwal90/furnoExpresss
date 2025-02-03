@@ -30,7 +30,7 @@ export function Footer() {
         <div className="bg-black bg-opacity-10 flex flex-col items-center justify-center h-full">
           <div className="text-center px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              Let's Build Your Dream Space
+              Let&apos;s Build Your Dream Space
             </h2>
             <p className="text-base sm:text-lg md:text-lg text-white mb-6 px-4 max-w-2xl mx-auto">
               Contact us today to transform your space with innovative design and quality furniture.
@@ -49,7 +49,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">FurniTech</h3>
+            <h3 className="text-2xl font-bold mb-4">FurnoExpress</h3>
             <p className="mb-4">Revolutionizing furniture with AI and cutting-edge technology.</p>
             <div className="flex space-x-4">
               <a href="#" className="hover:text-wood-light">
@@ -146,7 +146,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-wood-medium flex flex-col sm:flex-row justify-between items-center mb-10 ">
-          <p>&copy; {new Date().getFullYear()} FurniTech. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} FurnoExpress. All rights reserved.</p>
           <div className="mt-4 sm:mt-0">
             <Link href="/terms" className="hover:text-wood-light transition-colors duration-300 mr-4">
               Terms of Service

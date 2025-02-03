@@ -85,8 +85,8 @@ export const AnimatedTestimonials = ({
   return (
     <div className="max-w-sm md:max-w-4xl mx-auto antialiased font-sans px-4 md:px-8 lg:px-12 py-1 mb-40">
       <div className="text-center mb-16 py-4">
-        <h2 className="text-3xl font-bold tracking-tight text-#333 dark:text-white sm:text-4xl">
-          What they say about me
+        <h2 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text sm:text-4xl">
+          What People Say About Us
         </h2>
         <p className="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-300">
           Discover what others have experienced working with me

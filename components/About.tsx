@@ -30,8 +30,8 @@ export function About(){
             </button>
           </div>
         </div>
-        <CardContainer className="inter-var py-0">
-      <CardBody className=" relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] bg-black border-white/[0.2] w-auto sm:w-[40rem] sm-h-[30rem] rounded-xl  border ">
+        <CardContainer className="inter-var py-0 sm:h-[30rem]">
+      <CardBody className=" relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] bg-white border-white/[0.2] w-auto sm:w-[30rem] rounded-xl  border ">
         
         
         <CardItem translateZ="100" className="w-full ">
