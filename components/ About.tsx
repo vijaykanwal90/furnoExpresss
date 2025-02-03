@@ -5,7 +5,7 @@ import React from "react";
 import bg from "../public/bg.png";
 import { TextGenerateEffect } from './ui/TextGenerationEffect';
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
-import { Button } from './ui/moving-border';
+// import { Button } from './ui/moving-border';
 // import Link from "next/link";
 import { Separator } from "@/components/ui/separator"
 
@@ -23,9 +23,9 @@ export function About(){
             <p className="text-lg sm:text-xl mb-8">
               
             </p>
-            <Button className='' borderRadius='1.75rem'>
+            <button className='bg-gradient-to-r from-orange-600 to-amber-800 border-2 rounded-lg w-40 h-14 text-white font-bold '>
               <NextLink href='/customize'><span className="StylableButton2545352419__label wixui-button__label" data-testid="stylablebutton-label">CUSTOMIZE</span></NextLink>
-            </Button>
+            </button>
           </div>
         </div>
         <CardContainer className="inter-var">
