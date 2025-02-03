@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -7,7 +7,6 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function Button({
@@ -82,24 +81,40 @@ export const MovingBorder = ({
   ry?: string;
   [key: string]: any;
 }) => {
-  const pathRef = useRef<any>();
+  const pathRef = useRef<SVGRectElement | null>(null);
   const progress = useMotionValue<number>(0);
+  const [isRendered, setIsRendered] = useState(false);
+  const [pathLength, setPathLength] = useState<number | null>(null);
+
+  // Ensure that the path is available and has a length
+  useEffect(() => {
+    if (pathRef.current) {
+      const length = pathRef.current.getTotalLength();
+      if (length > 0) {
+        setPathLength(length); // Save the path length
+        setIsRendered(true); // Mark as rendered
+      } else {
+        setPathLength(0); // Set path length to 0 if it's invalid
+        setIsRendered(false); // Don't proceed with animation
+      }
+    }
+  }, [pathRef.current]); // Make sure to re-check when pathRef is set
 
   useAnimationFrame((time) => {
-    const length = pathRef.current?.getTotalLength();
-    if (length) {
-      const pxPerMillisecond = length / duration;
-      progress.set((time * pxPerMillisecond) % length);
-    }
+    // Prevent animation if the path is not rendered or has zero length
+    if (!isRendered || pathLength === null || pathLength === 0) return;
+
+    const pxPerMillisecond = pathLength / duration;
+    progress.set((time * pxPerMillisecond) % pathLength);
   });
 
   const x = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
+    (val) => pathRef.current?.getPointAtLength(val)?.x || 0
   );
   const y = useTransform(
     progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
+    (val) => pathRef.current?.getPointAtLength(val)?.y || 0
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;

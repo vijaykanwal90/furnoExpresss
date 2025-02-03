@@ -7,7 +7,7 @@ import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
 // import Link from "next/link";
 export function About(){
     return (
-        <section className='px-6 '>
+      <section className='px-6 relative z-0'>
             <div className='w-full h-full flex flex-col flex-between items-center my-32 sm:flex-row '>
              <div className='flex-1 space-y-4 sm:pr-80 px-4 sm:px-0 mt-20 sm:mt-0'>
           <div className='font-generalsans text-center sm:text-left'>
