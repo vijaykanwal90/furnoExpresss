@@ -49,11 +49,11 @@ export function Navbar() {
             <div className="ml-10 flex items-center space-x-4">
               <NavLink href="/#offerings">Offerings</NavLink>
               <NavLink href="/customize">Customize</NavLink>
-              <NavLink href="/contact">Contact Us</NavLink>
-              <NavLink href="/#about">About Us</NavLink>
+              <NavLink href="/contact">Contact</NavLink>
+              <NavLink href="/#about">About</NavLink>
               <button
                 onClick={toggleSignup}
-                className="bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-sm md:text-xl py-2 px-4 rounded transition-colors duration-300"
+                className="bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-sm md:text-xl py-2  rounded transition-colors duration-300"
               >
                 Sign In
               </button>
@@ -77,8 +77,8 @@ export function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col">
+      <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"} absolute inset-0 z-50 mt-12 h-full` }>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col gap-2 m-4 py-4">
           <NavLink href="/offerings" onClick={closeMenu}>
             Offerings
           </NavLink>
@@ -93,7 +93,7 @@ export function Navbar() {
           </NavLink>
           <button
             onClick={toggleSignup}
-            className="w-full text-left bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-sm md:text-xl py-2 px-4 rounded transition-colors duration-300 mt-2"
+            className="w-full text-left bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-sm md:text-xl  rounded transition-colors duration-300 hover:text-wood-dark "
           >
             Sign In
           </button>
