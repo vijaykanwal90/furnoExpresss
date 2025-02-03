@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import logo from "../public/logo.svg";
-import { Button } from "./ui/moving-border";
 import SignupModal from "./SignupModal";
 
 const NavLink = ({
@@ -20,7 +19,7 @@ const NavLink = ({
 }) => (
   <Link
     href={href}
-    className="text-wood-dark hover:text-wood-medium hover:underline transition-all duration-300 block py-2 px-4 text-base"
+    className="bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-sm md:text-lg lg:text-xl"
     onClick={onClick}
   >
     {children}
@@ -42,17 +41,22 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image src={logo} alt="logo" width={40} />
-              <span className="text-2xl px-2 font-bold text-wood-dark">FurnoExpress</span>
+              <span className="bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-2xl">
+                FurnoExpress
+              </span>
             </Link>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               <NavLink href="/#home">Home</NavLink>
               <NavLink href="/#offerings">Offerings</NavLink>
+              <NavLink href="/customize">Customize</NavLink>
               <NavLink href="/contact">Contact</NavLink>
-              <NavLink href="/#about">About Us</NavLink>
-              <NavLink href="/#faqs">FAQs</NavLink>
-              <button className="bg-amber-900 hover:bg-amber-950 text-white font-bold py-2 px-4 rounded transition-colors duration-300 text-sm">
+              <NavLink href="/#about">About</NavLink>
+              <button
+                onClick={toggleSignup}
+                className="bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-sm md:text-xl py-2  rounded transition-colors duration-300"
+              >
                 Sign In
               </button>
             </div>
@@ -75,8 +79,8 @@ export function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"} absolute inset-0 z-50 mt-12 h-full` }>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col gap-2 m-4 py-4">
           <NavLink href="/offerings" onClick={closeMenu}>
             Offerings
           </NavLink>
@@ -91,7 +95,7 @@ export function Navbar() {
           </NavLink>
           <button
             onClick={toggleSignup}
-            className="w-full text-left bg-wood-medium hover:bg-wood-dark text-cream font-bold py-2 px-4 rounded transition-colors duration-300 mt-2 text-sm"
+            className="w-full text-left bg-gradient-to-r from-orange-600 to-amber-800 text-transparent bg-clip-text font-bold text-sm md:text-xl  rounded transition-colors duration-300 hover:text-wood-dark "
           >
             Sign In
           </button>
